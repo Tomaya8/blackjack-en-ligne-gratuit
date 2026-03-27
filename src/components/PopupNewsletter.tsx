@@ -7,7 +7,6 @@ export default function PopupNewsletter() {
   const [visible, setVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const dismissedRef = useRef(false);
   const shownOnceRef = useRef(false);
 
@@ -50,7 +49,6 @@ export default function PopupNewsletter() {
     try {
       await submitLead({
         email,
-        phone: phone || undefined,
         source: "popup-newsletter",
       });
     } catch (err) {
@@ -101,13 +99,6 @@ export default function PopupNewsletter() {
                 placeholder="Votre email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none text-sm"
-              />
-              <input
-                type="tel"
-                placeholder="Téléphone (optionnel)"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none text-sm"
               />
               <button

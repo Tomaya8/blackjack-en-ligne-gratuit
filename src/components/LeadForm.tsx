@@ -15,24 +15,23 @@ export default function LeadForm({
   variant = "inline",
 }: LeadFormProps) {
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     try {
       await submitLead({
         email,
-        phone: phone || undefined,
         source: `leadform-${variant}`,
       });
       setSubmitted(true);
     } catch (err) {
       console.error("Lead submission failed:", err);
-      setSubmitted(true);
+      setError("Une erreur est survenue. Veuillez réessayer.");
     } finally {
       setLoading(false);
     }
@@ -60,13 +59,6 @@ export default function LeadForm({
             placeholder="Votre email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg text-card-black text-sm outline-none"
-          />
-          <input
-            type="tel"
-            placeholder="Téléphone (optionnel)"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
             className="w-full px-3 py-2 rounded-lg text-card-black text-sm outline-none"
           />
           <button
@@ -97,11 +89,13 @@ export default function LeadForm({
             />
             <button
               type="submit"
+              disabled={loading}
               className="bg-accent hover:bg-accent-dark text-card-black font-bold px-6 py-3 rounded-lg transition-colors text-sm whitespace-nowrap"
             >
-              Recevoir les conseils
+              {loading ? "Envoi..." : "Recevoir les conseils"}
             </button>
           </form>
+          {error && <p className="text-red-300 text-sm mt-3">{error}</p>}
         </div>
       </div>
     );
@@ -119,13 +113,6 @@ export default function LeadForm({
           placeholder="Votre email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 px-4 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-accent"
-        />
-        <input
-          type="tel"
-          placeholder="Téléphone (optionnel)"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
           className="flex-1 px-4 py-2 border border-gray-200 rounded-lg text-sm outline-none focus:ring-2 focus:ring-accent"
         />
         <button
