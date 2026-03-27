@@ -63,10 +63,12 @@ export default function LeadForm({
           />
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-accent hover:bg-accent-dark text-card-black font-bold py-2 rounded-lg transition-colors text-sm"
           >
-            Recevoir le guide PDF
+            {loading ? "Envoi..." : "Recevoir le guide PDF"}
           </button>
+          {error && <p className="text-red-300 text-xs">{error}</p>}
         </form>
       </div>
     );
@@ -85,7 +87,7 @@ export default function LeadForm({
               placeholder="Votre email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-lg text-card-black text-sm outline-none"
+              className="flex-1 px-4 py-3 rounded-lg text-card-black text-sm outline-none border-2 border-white/50 bg-white placeholder:text-gray-400 focus:border-accent"
             />
             <button
               type="submit"
@@ -117,11 +119,13 @@ export default function LeadForm({
         />
         <button
           type="submit"
+          disabled={loading}
           className="bg-accent hover:bg-accent-dark text-card-black font-bold px-6 py-2 rounded-lg transition-colors text-sm"
         >
-          Recevoir
+          {loading ? "Envoi..." : "Recevoir"}
         </button>
       </form>
+      {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
     </div>
   );
 }

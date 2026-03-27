@@ -30,7 +30,7 @@ const faq = [
 export default function BlackjackMultiMainsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
-      <Breadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Variantes", href: "/blackjack-en-ligne" }, { label: "Blackjack multi-mains" }]} />
+      <Breadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Blackjack en ligne", href: "/blackjack-en-ligne" }, { label: "Blackjack multi-mains" }]} />
 
       <article className="max-w-3xl">
         <h1 className="text-3xl md:text-4xl font-bold mb-6">

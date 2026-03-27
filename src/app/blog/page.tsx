@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import LeadForm from "@/components/LeadForm";
+import BlogFilter from "@/components/BlogFilter";
 
 export const metadata: Metadata = {
   title: "Blog Blackjack : Articles, Stratégies et Conseils d'Experts",
@@ -178,8 +177,6 @@ const articles = [
   },
 ];
 
-const categories = ["Tous", "Stratégies", "Guides débutants", "Mathématiques", "Psychologie du jeu"];
-
 export default function BlogPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -193,54 +190,7 @@ export default function BlogPage() {
         psychologie du jeu et guides pour tous les niveaux.
       </p>
 
-      {/* Categories */}
-      <div className="flex flex-wrap gap-2 mb-10">
-        {categories.map((cat) => (
-          <span
-            key={cat}
-            className={`px-4 py-2 rounded-full text-sm font-medium border transition-colors cursor-pointer ${
-              cat === "Tous"
-                ? "bg-primary text-white border-primary"
-                : "bg-white text-text-light border-gray-200 hover:border-accent hover:text-accent"
-            }`}
-          >
-            {cat}
-          </span>
-        ))}
-      </div>
-
-      {/* Articles Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {articles.map((article) => (
-          <Link
-            key={article.slug}
-            href={`/blog/${article.slug}`}
-            className="group border border-gray-200 rounded-xl overflow-hidden hover:border-accent hover:shadow-lg transition-all"
-          >
-            <div className="relative h-48 overflow-hidden">
-              <Image
-                src={article.image}
-                alt={article.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="bg-accent/10 text-accent-dark text-xs font-medium px-2 py-1 rounded">
-                  {article.category}
-                </span>
-                <time className="text-xs text-text-light">{article.date}</time>
-              </div>
-              <h2 className="font-bold text-lg mb-2 group-hover:text-accent transition-colors">
-                {article.title}
-              </h2>
-              <p className="text-sm text-text-light line-clamp-3">{article.excerpt}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+      <BlogFilter articles={articles} />
 
       <LeadForm variant="banner" title="Recevez nos meilleurs articles par email" description="Stratégies, astuces et analyses directement dans votre boîte mail" />
     </div>

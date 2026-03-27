@@ -17,13 +17,22 @@ const navLinks = [
       { href: "/blackjack-multi-mains", label: "Multi-mains" },
     ],
   },
+  {
+    href: "#",
+    label: "Par pays",
+    children: [
+      { href: "/blackjack-france", label: "France" },
+      { href: "/blackjack-belgique", label: "Belgique" },
+      { href: "/blackjack-suisse", label: "Suisse" },
+      { href: "/blackjack-quebec", label: "Québec" },
+    ],
+  },
   { href: "/blackjack-gratuit", label: "Jouer gratuit" },
   { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [variantOpen, setVariantOpen] = useState(false);
 
   return (
     <header className="bg-felt-dark text-white sticky top-0 z-50 shadow-lg">
@@ -41,8 +50,6 @@ export default function Header() {
               <div key={link.label} className="relative group">
                 <button
                   className="hover:text-accent transition-colors flex items-center gap-1"
-                  onMouseEnter={() => setVariantOpen(true)}
-                  onMouseLeave={() => setVariantOpen(false)}
                 >
                   {link.label}
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,12 +57,9 @@ export default function Header() {
                   </svg>
                 </button>
                 <div
-                  className={`absolute top-full left-0 bg-card-black rounded-lg shadow-xl py-2 min-w-[180px] transition-all ${
-                    variantOpen ? "opacity-100 visible" : "opacity-0 invisible"
-                  }`}
-                  onMouseEnter={() => setVariantOpen(true)}
-                  onMouseLeave={() => setVariantOpen(false)}
+                  className="absolute top-full pt-1 left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all"
                 >
+                <div className="bg-card-black rounded-lg shadow-xl py-2 min-w-[180px]">
                   {link.children.map((child) => (
                     <Link
                       key={child.href}
@@ -65,6 +69,7 @@ export default function Header() {
                       {child.label}
                     </Link>
                   ))}
+                </div>
                 </div>
               </div>
             ) : (

@@ -82,9 +82,9 @@ export default function MentionsLegalesPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-bold mb-4">Cookies</h2>
           <p className="text-text-light leading-relaxed">
-            Ce site utilise des cookies à des fins d&apos;analyse de fréquentation (Google
-            Analytics) et de fonctionnement (préférences utilisateur). Vous pouvez configurer
-            votre navigateur pour refuser les cookies.
+            Ce site utilise des cookies à des fins de fonctionnement (préférences utilisateur).
+            Vous pouvez configurer votre navigateur pour refuser les cookies ou utiliser le
+            bandeau de consentement affiché lors de votre première visite.
           </p>
         </section>
 

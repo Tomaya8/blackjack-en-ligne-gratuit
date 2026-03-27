@@ -73,9 +73,9 @@ export default function HomePage() {
           </div>
 
           {/* Lead capture above the fold */}
-          <div className="mt-10 max-w-xl">
+          <div className="mt-10 max-w-2xl">
             <LeadForm
-              variant="inline"
+              variant="banner"
               title="Recevez notre guide stratégie en PDF"
               description="Tableau de stratégie optimale + astuces exclusives"
             />

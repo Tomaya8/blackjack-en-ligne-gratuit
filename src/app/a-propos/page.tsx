@@ -7,21 +7,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/a-propos" },
 };
 
-const team = [
+const expertise = [
   {
-    name: "Marc Dupont",
-    role: "Fondateur & Expert Stratégie",
-    bio: "Passionné de mathématiques appliquées aux jeux de hasard depuis plus de 15 ans. Diplômé en statistiques de l'Université Paris-Saclay. Marc a analysé des millions de mains de blackjack pour développer des contenus fondés sur les probabilités réelles.",
+    title: "Stratégie & Mathématiques",
+    icon: "♠",
+    description: "Notre équipe analyse les probabilités, les simulations statistiques et la stratégie de base pour vous offrir des conseils fondés sur les mathématiques réelles du blackjack.",
   },
   {
-    name: "Sophie Laurent",
-    role: "Rédactrice en Chef",
-    bio: "Journaliste spécialisée dans l'industrie des jeux en ligne depuis 10 ans. Ancienne rédactrice pour plusieurs publications de référence dans le secteur. Sophie veille à la qualité, l'exactitude et la clarté de tous nos contenus.",
+    title: "Rédaction Experte",
+    icon: "♦",
+    description: "Chaque article est rédigé par des spécialistes du secteur des jeux en ligne, avec un souci constant de clarté, d'exactitude et de pédagogie.",
   },
   {
-    name: "Thomas Berger",
-    role: "Analyste Réglementaire",
-    bio: "Expert en droit des jeux de hasard dans l'espace francophone. Thomas suit les évolutions réglementaires en France, Belgique, Suisse et au Québec pour garantir l'exactitude de nos informations légales.",
+    title: "Veille Réglementaire",
+    icon: "♣",
+    description: "Nous suivons les évolutions réglementaires en France, Belgique, Suisse et au Québec pour garantir l'exactitude de nos informations légales.",
   },
 ];
 
@@ -77,20 +77,17 @@ export default function AProposPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-4">Notre équipe</h2>
+          <h2 className="text-2xl font-bold mb-4">Notre expertise</h2>
           <div className="space-y-6">
-            {team.map((member) => (
-              <div key={member.name} className="border border-gray-200 rounded-xl p-6">
+            {expertise.map((item) => (
+              <div key={item.title} className="border border-gray-200 rounded-xl p-6">
                 <div className="flex items-center gap-4 mb-3">
                   <div className="bg-felt text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg">
-                    {member.name.split(" ").map((n) => n[0]).join("")}
+                    {item.icon}
                   </div>
-                  <div>
-                    <h3 className="font-bold">{member.name}</h3>
-                    <p className="text-sm text-accent-dark">{member.role}</p>
-                  </div>
+                  <h3 className="font-bold">{item.title}</h3>
                 </div>
-                <p className="text-sm text-text-light">{member.bio}</p>
+                <p className="text-sm text-text-light">{item.description}</p>
               </div>
             ))}
           </div>

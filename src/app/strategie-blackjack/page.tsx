@@ -77,6 +77,7 @@ export default function StrategieBlackjackPage() {
 
           {/* Hard Hands Table */}
           <h3 className="font-bold text-lg mb-3">Mains dures (Hard Hands)</h3>
+          <p className="text-xs text-text-light italic mb-2 sm:hidden">← Faites défiler le tableau →</p>
           <div className="overflow-x-auto mb-6">
             <table className="w-full text-xs border border-gray-200 rounded-lg overflow-hidden">
               <thead className="bg-felt text-white">
@@ -130,6 +131,7 @@ export default function StrategieBlackjackPage() {
 
           {/* Soft Hands Table */}
           <h3 className="font-bold text-lg mb-3">Mains souples (Soft Hands)</h3>
+          <p className="text-xs text-text-light italic mb-2 sm:hidden">← Faites défiler le tableau →</p>
           <div className="overflow-x-auto mb-6">
             <table className="w-full text-xs border border-gray-200 rounded-lg overflow-hidden">
               <thead className="bg-felt text-white">

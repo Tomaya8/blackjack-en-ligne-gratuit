@@ -5,7 +5,7 @@ import LeadForm from "@/components/LeadForm";
 import FAQSchema from "@/components/FAQSchema";
 
 export const metadata: Metadata = {
-  title: "Blackjack en Ligne : Guide Complet pour Jouer en 2026",
+  title: "Blackjack en Ligne : Guide Complet pour Jouer",
   description:
     "Tout savoir sur le blackjack en ligne : comment jouer, avantages, inconvénients et conseils d'experts. Guide complet pour les joueurs francophones.",
   alternates: { canonical: "/blackjack-en-ligne" },

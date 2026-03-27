@@ -7,6 +7,8 @@ export default function PopupNewsletter() {
   const [visible, setVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const dismissedRef = useRef(false);
   const shownOnceRef = useRef(false);
 
@@ -46,17 +48,22 @@ export default function PopupNewsletter() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     try {
       await submitLead({
         email,
         source: "popup-newsletter",
       });
+      setSubmitted(true);
+      localStorage.setItem("popup_dismissed", "true");
+      setTimeout(() => setVisible(false), 3000);
     } catch (err) {
       console.error("Lead submission failed:", err);
+      setError("Une erreur est survenue. Veuillez réessayer.");
+    } finally {
+      setLoading(false);
     }
-    setSubmitted(true);
-    localStorage.setItem("popup_dismissed", "true");
-    setTimeout(() => setVisible(false), 3000);
   };
 
   if (!visible) return null;
@@ -103,10 +110,12 @@ export default function PopupNewsletter() {
               />
               <button
                 type="submit"
+                disabled={loading}
                 className="w-full bg-accent hover:bg-accent-dark text-card-black font-bold py-3 rounded-lg transition-colors text-sm"
               >
-                Recevoir les conseils
+                {loading ? "Envoi..." : "Recevoir les conseils"}
               </button>
+              {error && <p className="text-red-500 text-xs text-center">{error}</p>}
               <p className="text-[11px] text-gray-400 text-center">
                 Pas de spam. Désabonnement en 1 clic.
               </p>
