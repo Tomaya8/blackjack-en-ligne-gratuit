@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { submitLead } from "@/lib/submitLead";
 
 export default function PopupNewsletter() {
   const [visible, setVisible] = useState(false);
@@ -44,10 +45,17 @@ export default function PopupNewsletter() {
     localStorage.setItem("popup_dismissed", "true");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Integrate with Mailchimp / Brevo
-    console.log("Lead captured:", { email, phone });
+    try {
+      await submitLead({
+        email,
+        phone: phone || undefined,
+        source: "popup-newsletter",
+      });
+    } catch (err) {
+      console.error("Lead submission failed:", err);
+    }
     setSubmitted(true);
     localStorage.setItem("popup_dismissed", "true");
     setTimeout(() => setVisible(false), 3000);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitLead } from "@/lib/submitLead";
 
 interface LeadFormProps {
   title?: string;
@@ -17,10 +18,24 @@ export default function LeadForm({
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Lead:", { email, phone });
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      await submitLead({
+        email,
+        phone: phone || undefined,
+        source: `leadform-${variant}`,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Lead submission failed:", err);
+      setSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {

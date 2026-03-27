@@ -73,22 +73,12 @@ export default function HomePage() {
           </div>
 
           {/* Lead capture above the fold */}
-          <div className="mt-10 max-w-xl bg-white/10 backdrop-blur rounded-xl p-6">
-            <p className="font-bold text-lg mb-1">Recevez notre guide stratégie en PDF</p>
-            <p className="text-sm opacity-80 mb-4">Tableau de stratégie optimale + astuces exclusives</p>
-            <form className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Votre email"
-                className="flex-1 px-4 py-2 rounded-lg text-card-black text-sm outline-none"
-              />
-              <button
-                type="submit"
-                className="bg-accent hover:bg-accent-dark text-card-black font-bold px-6 py-2 rounded-lg transition-colors text-sm whitespace-nowrap"
-              >
-                Recevoir le guide
-              </button>
-            </form>
+          <div className="mt-10 max-w-xl">
+            <LeadForm
+              variant="inline"
+              title="Recevez notre guide stratégie en PDF"
+              description="Tableau de stratégie optimale + astuces exclusives"
+            />
           </div>
         </div>
       </section>
