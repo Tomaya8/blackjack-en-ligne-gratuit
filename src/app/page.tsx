@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LeadForm from "@/components/LeadForm";
 import FAQSchema from "@/components/FAQSchema";
+import TopBlackjackCasinos from "@/components/TopBlackjackCasinos";
 
 const variants = [
   { href: "/blackjack-europeen", title: "Blackjack Européen", desc: "Règles classiques, une seule main pour le croupier, avantage réduit pour la maison." },
@@ -199,6 +200,11 @@ export default function HomePage() {
       {/* Lead capture mid-page */}
       <section className="max-w-7xl mx-auto px-4 py-4">
         <LeadForm variant="banner" />
+      </section>
+
+      {/* Top blackjack casinos */}
+      <section className="max-w-7xl mx-auto px-4">
+        <TopBlackjackCasinos limit={4} />
       </section>
 
       {/* Articles récents */}
