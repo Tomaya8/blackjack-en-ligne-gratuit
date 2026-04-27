@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PopupNewsletter from "@/components/PopupNewsletter";
 import CookieConsent from "@/components/CookieConsent";
+import GoogleAnalytics from './GoogleAnalytics';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -75,6 +76,7 @@ export default function RootLayout({
         <Footer />
         <PopupNewsletter />
         <CookieConsent />
+        <GoogleAnalytics />
       </body>
     </html>
   );
